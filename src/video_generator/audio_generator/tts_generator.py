@@ -6,7 +6,7 @@ load_dotenv()
 
 openai_client = OpenAI(api_key=os.getenv("OPENAI_TOKEN"))
 
-def write_text_to_speech(content: str, post_id: str) -> str:
+def write_text_to_speech(content: str, post_id: str, audio_filepath: str) -> str:
     file_path = f'Frontend/backend/audio_clips/{post_id}.mp3'
     try:
         with open(file_path, 'x') as file:
