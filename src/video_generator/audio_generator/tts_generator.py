@@ -17,7 +17,7 @@ def write_text_to_speech(content: str, post_id: str, audio_filepath: str) -> str
             voice="onyx",
             input=content
         )
-        response.stream_to_file(f'Frontend/backend/audio_clips/{post_id}.mp3')
+        response.stream_to_file(f'{audio_filepath}/{post_id}.mp3')
 
     except FileExistsError:
         return file_path
