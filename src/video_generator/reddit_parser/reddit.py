@@ -29,7 +29,7 @@ def request_post_data(url: str) -> Dict:
     request_url = f"{base_url}{post_id}"
     print(f"REQUEST URL = {request_url}")
     response = requests.get(request_url, headers=headers)
-    print(f"RESPONSE = {response}")
+    print(f"RESPONSE = {response.text}")
     try:
         return response.json()['data']['children'][0]["data"]
     except requests.exceptions.JSONDecodeError:
