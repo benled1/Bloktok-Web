@@ -1,4 +1,5 @@
 import requests
+from .exceptions import *
 from typing import Dict
 from dotenv import load_dotenv
 import os
@@ -23,13 +24,16 @@ def get_post_id(url:str) -> str:
 def request_post_data(url: str) -> Dict:
     headers = {'Authorization': f'bearer {access_token}', 'User-Agent': 'ChangeMeClient/0.1'}
     base_url = f"https://oauth.reddit.com/api/info/?id=t3_"
-
     post_id = get_post_id(url)
 
     request_url = f"{base_url}{post_id}"
+    print(f"REQUEST URL = {request_url}")
     response = requests.get(request_url, headers=headers)
-    return response.json()['data']['children'][0]["data"]
-
+    print(f"RESPONSE = {response}")
+    try:
+        return response.json()['data']['children'][0]["data"]
+    except requests.exceptions.JSONDecodeError:
+        raise UnexpectedResponseFormat(f"Response from the reddit API was different than expected.\n JSON response = \n{response.json()}")
 
 def get_post_title(reddit_data: Dict) -> str:
     for slang in reddit_slang:
