@@ -7,7 +7,7 @@ load_dotenv()
 openai_client = OpenAI(api_key=os.getenv("OPENAI_TOKEN"))
 
 def write_text_to_speech(content: str, post_id: str, audio_filepath: str) -> str:
-    file_path = f'/home/benled/dev/Bloktok-Web/media/tmp/audio/{post_id}.mp3'
+    file_path = f'{audio_filepath}/{post_id}.mp3'
     try:
         with open(file_path, 'x') as file:
             pass 
@@ -17,7 +17,7 @@ def write_text_to_speech(content: str, post_id: str, audio_filepath: str) -> str
             voice="onyx",
             input=content
         )
-        response.stream_to_file(f'{audio_filepath}/{post_id}.mp3')
+        response.stream_to_file(file_path)
 
     except FileExistsError:
         return file_path
