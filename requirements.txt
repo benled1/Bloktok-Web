@@ -1,0 +1,4 @@
+moviepy
+python-dotenv
+openai
+faster_whisper
