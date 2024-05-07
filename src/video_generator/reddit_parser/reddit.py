@@ -1,10 +1,8 @@
 import requests
+import re
 from .exceptions import *
 from typing import Dict
-from dotenv import load_dotenv 
 from .reddit_auth import *
-import os
-import re
 
 reddit_slang = {
     "AITA": "am I the asshole"
@@ -33,6 +31,7 @@ def request_post_data(url: str) -> Dict:
     except requests.exceptions.JSONDecodeError:
         refresh_bearer_token()
         access_token = get_access_token()
+        print(f"CURRENT ACCESS TOKEN = {access_token}")
         headers = {'Authorization': f'bearer {access_token}', 'User-Agent': 'ChangeMeClient/0.1'}
         base_url = f"https://oauth.reddit.com/api/info/?id=t3_"
         post_id = get_post_id(url)
