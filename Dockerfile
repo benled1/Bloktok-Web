@@ -26,9 +26,10 @@ RUN apt-get update && \
       apt-get -y install sudo && \
       apt-get install -y libyaml-dev && \
       apt-get install -y vim && \
-      apt install imagemagick -y
+      sudo apt install imagemagick -y
+RUN cat ./policy.xml > /etc/ImageMagick-6/policy.xml
 RUN pip install -r /app/requirements.txt
 
-# ENTRYPOINT ["python", "src/main.py"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["python", "src/main.py"]
+# ENTRYPOINT ["/bin/bash"]
 
