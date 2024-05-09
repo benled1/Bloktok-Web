@@ -1,5 +1,5 @@
-from video_generator import video_generator
-from video_generator.reddit_parser.reddit_auth import *
+from .video_generator import video_generator
+from .video_generator.reddit_parser.reddit_auth import *
 from typing import Dict
 from dotenv import load_dotenv
 from fastapi import FastAPI

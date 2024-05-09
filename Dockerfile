@@ -15,5 +15,5 @@ RUN apt-get update && \
 RUN cat ./policy.xml > /etc/ImageMagick-6/policy.xml
 RUN pip install -r /app/requirements.txt
 
-ENTRYPOINT ["fastapi", "dev", "src/main.py"]
+ENTRYPOINT ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
