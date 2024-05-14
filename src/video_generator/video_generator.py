@@ -44,7 +44,7 @@ def get_video(text_body: str, audio_file: str):
     videos_created = len(os.listdir(os.getenv("TMP_VIDEO_PATH")))
     #Create subtitles
     subtitle_file = transcribeAudio(audio_file, videos_created)
-    generator = lambda txt: mpe.TextClip(txt, font='Impact', fontsize=50, color="white", stroke_color="black", stroke_width=2,  size=v_clip.size)
+    generator = lambda txt: mpe.TextClip(txt, fontsize=50, color="white", stroke_color="black", stroke_width=2,  size=v_clip.size)
     subtitles = SubtitlesClip(subtitle_file, generator)
     # Create a new video with the name
     file_output_path = f"{os.getenv('TMP_VIDEO_PATH')}/{videos_created}.mp4"

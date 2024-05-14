@@ -13,6 +13,7 @@ RUN apt-get update && \
       apt-get install -y vim && \
       sudo apt install imagemagick -y
 RUN cat ./policy.xml > /etc/ImageMagick-6/policy.xml
+ENV DISPLAY=
 RUN pip install -r /app/requirements.txt
 
 ENTRYPOINT ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]

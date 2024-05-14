@@ -64,6 +64,12 @@
   <!-- <policy domain="resource" name="list-length" value="128"/> -->
   <policy domain="resource" name="area" value="128MP"/>
   <policy domain="resource" name="disk" value="1GiB"/>
+  <policy domain="coder" rights="read|write" pattern="LABEL" />
+  <policy domain="coder" rights="read|write" pattern="MVG" />
+  <policy domain="coder" rights="read|write" pattern="MSL" />
+  <policy domain="coder" rights="read|write" pattern="PLT" />
+  <policy domain="path" rights="read|write" pattern="@*" />
+  <policy domain="path" rights="read|write" pattern="{GIF,JPEG,PNG,WEBP}" />
   <!-- <policy domain="resource" name="file" value="768"/> -->
   <!-- <policy domain="resource" name="thread" value="4"/> -->
   <!-- <policy domain="resource" name="throttle" value="0"/> -->
